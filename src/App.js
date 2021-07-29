@@ -1,22 +1,45 @@
-import logo from './logo.svg';
+import Player from './components/player';
+import Dealer from './components/dealer';
 import './App.css';
+import { useEffect , useState } from 'react';
 
 function App() {
+  const [cardDeck , setCardDeck ] = useState("Deck Loding");
+
+
+
+
+  useEffect(()=>{
+    const suits = ["spades", "diamonds", "clubs", "hearts"];
+    const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+    const deck = [];
+    for(let i = 0 ; i < suits.length ; i++){
+      for(let j = 0 ; j < values.length ; j++){
+          let card = {value: values[j] , suit : suits[i]};
+          deck.push(card);
+      }
+
+    }
+    setCardDeck(deck)
+
+  },[])
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <Player
+          cardDeck = {cardDeck}
+        />
+        <button  >Play</button>
+        <button >Stay</button>
+        <button >Hit</button>
+        <Dealer
+          cardDeck = {cardDeck}
+        />
+
       </header>
     </div>
   );
