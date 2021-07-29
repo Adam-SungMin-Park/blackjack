@@ -3,10 +3,16 @@ import Dealer from './components/dealer';
 import './App.css';
 import { useEffect , useState } from 'react';
 
+/*export const BlackJackContext = React.createContext();*/
+
 function App() {
-  const [cardDeck , setCardDeck ] = useState("Deck Loding");
+  const [playerCard , setPlayerCard ] = useState();
+  const [dealerCard , setDealerCard ] = useState(["Deck Loding"]);
+  const [deck , setDeck] = useState(['loading'])
 
-
+  /*const BlackJackContextValue = {
+    hit
+  }*/
 
 
   useEffect(()=>{
@@ -18,12 +24,24 @@ function App() {
           let card = {value: values[j] , suit : suits[i]};
           deck.push(card);
       }
+      setDeck(deck);
 
     }
-    setCardDeck(deck)
+    setPlayerCard([deck[Math.floor((Math.random()*deck.length))]])
+    setDealerCard([deck[Math.floor((Math.random()*deck.length))]])
 
   },[])
 
+  function hit(){
+
+      for(let i = 0 ; i < deck.length ; i++){
+        let newCard = Math.floor((Math.random()*deck.length))
+        setPlayerCard([...playerCard , deck[newCard]])
+
+      }
+      console.log(playerCard)
+
+    }
 
 
   return (
@@ -31,13 +49,13 @@ function App() {
       <header className="App-header">
 
         <Player
-          cardDeck = {cardDeck}
+          card = {playerCard}
         />
-        <button  >Play</button>
+        <button onClick = {()=> window.location.reload()} >Reset</button>
         <button >Stay</button>
-        <button >Hit</button>
+        <button onClick ={hit}>Hit</button>
         <Dealer
-          cardDeck = {cardDeck}
+          card = {dealerCard}
         />
 
       </header>

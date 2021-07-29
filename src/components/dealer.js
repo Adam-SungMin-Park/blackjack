@@ -1,20 +1,24 @@
 import React , {useState, useEffect} from 'react';
 
-export default function Dealer ({cardDeck}){
-  const [dealerCard , setDealerCard ] = useState('Deck is loading')
+export default function Dealer ({card}){
+  const [dealerCard , setDealerCard ] = useState(['isloading'])
+  //const [dealerScore , setDealerScore ] = useState(0)
+
 
   useEffect(()=>{
-    setDealerCard(cardDeck[0])
+    setDealerCard(card)
+
+
+
 
   },[dealerCard])
 
 
-
-
-
   return(
   <>
-  <div className = "card1">the value of the dealer's card is : {dealerCard.value} , {dealerCard.suit} </div>
+  <div className = "dealerTable">the value of the dealer's card is :
+
+  </div>
   </>
   )
 
