@@ -1,20 +1,33 @@
 import React , {useState, useEffect} from 'react';
 
 export default function Dealer ({cardDeck}){
-  const [dealerCard , setDealerCard ] = useState('Deck is loading')
+  const [dealerCard , setDealerCard ] = useState(['Deck is loading'])
 
   useEffect(()=>{
-    setDealerCard(cardDeck[0])
+     for(let i = 0 ; i < cardDeck.length ; i++){
+      let card1 = Math.floor((Math.random()*cardDeck.length))
+      let card2 = Math.floor((Math.random()*cardDeck.length))
 
-  },[dealerCard])
+
+    setDealerCard([cardDeck[card1],cardDeck[card2]])
+    }
 
 
+  },[cardDeck])
+
+ console.log(dealerCard)
 
 
 
   return(
   <>
-  <div className = "card1">the value of the dealer's card is : {dealerCard.value} , {dealerCard.suit} </div>
+  <div className = "dealerTable">the value of the dealer's card is :
+    {dealerCard.map((card,index)=>{
+      return (
+        <div className = "dealerCard" key = {index} >{card.suit} {card.value} </div>
+      )
+    })}
+    </div>
   </>
   )
 
