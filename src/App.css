@@ -1,0 +1,20 @@
+.dealerTable {
+  display: flex;
+}
+.dealerCard {
+  width: 30%;
+  height: 30vh;
+  text-align: center;
+  background: green;
+  margin-right: 1rem;
+}
+.playerTable {
+  display: flex;
+}
+.playerCard {
+  width: 30%;
+  height: 30vh;
+  text-align: center;
+  background: green;
+  margin-right: 1rem;
+}

@@ -1,30 +1,42 @@
 import React , {useState, useEffect} from 'react';
 
-export default function Dealer ({cardDeck}){
-  const [playerCard , setPlayerCard ] = useState('Deck is loading')
-
+export default function Dealer ({card}){
+  const [playerCard , setPlayerCard ] = useState(card)
   useEffect(()=>{
-
-    for(let i = 0 ; i < cardDeck.length ; i++){
-      let card1 = Math.floor((Math.random()*cardDeck.length))
-      let card2 = Math.floor((Math.random()*cardDeck.length))
-
-
-    setPlayerCard([cardDeck[card1],cardDeck[card2]])
-    }
-
-
-  },[cardDeck])
+    setPlayerCard(card);
 
 
 
+  },[card])
+
+  console.log(playerCard)
+  if(playerCard === undefined){
+    return(
+    <>
+    <div className = "card1">the value of the player's card is :
 
 
-  return(
-  <>
-  <div className = "card1">the value of the player's card is : {playerCard[0].value} , {playerCard[0].suit}  {playerCard[1].value} , {playerCard[1].suit}  </div>
-  </>
-  )
+    </div>
+    </>
+    )
+
+  }
+  else{
+     return(
+    <>
+    <div className = "playerTable">the value of the player's card is :
+      {playerCard.map((card,index)=>{
+        return(
+          <div className = "playerCard" key = {index}>
+            {card.suit} {card.value}
+            </div>
+        )
+      })}
+
+    </div>
+    </>
+    )
+  }
 
 
 
