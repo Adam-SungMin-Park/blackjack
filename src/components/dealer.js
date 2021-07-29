@@ -1,23 +1,23 @@
-import React , {useState, useEffect} from 'react';
+import React  from 'react';
 
-export default function Dealer ({card}){
-  const [dealerCard , setDealerCard ] = useState(['isloading'])
-  //const [dealerScore , setDealerScore ] = useState(0)
+export default function Dealer ({card,score}){
 
 
-  useEffect(()=>{
-    setDealerCard(card)
-
-
-
-
-  },[dealerCard])
 
 
   return(
   <>
-  <div className = "dealerTable">the value of the dealer's card is :
-
+  <div className = "scoreBoard">Dealer :{score}</div>
+  <div className = "dealerTable">
+    {card.map((card,index)=>{
+      return(
+        <div className = "dealerCard" key = {index}>
+          <div className = "cardInfo">
+          {card.suit} {card.value}
+          </div>
+        </div>
+      )
+    })}
   </div>
   </>
   )

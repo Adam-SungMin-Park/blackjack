@@ -1,7 +1,6 @@
-import React , {useState, useEffect} from 'react';
+import React from 'react';
 
 export default function Dealer ({card , score}){
-
 
   console.log(score)
   if(card === undefined){
@@ -15,11 +14,14 @@ export default function Dealer ({card , score}){
   else{
      return(
     <>
-      <div className = "playerTable">the value of the player's card is :{score}
+    <div className = "scoreBoard">Player :{score}</div>
+      <div className = "playerTable">
         {card.map((card,index)=>{
           return(
             <div className = "playerCard" key = {index}>
+              <div className ="cardInfo">
               {card.suit} {card.value}
+              </div>
               </div>
           )
         })}

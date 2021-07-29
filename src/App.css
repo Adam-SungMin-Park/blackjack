@@ -1,20 +1,35 @@
 .dealerTable {
   display: flex;
+  justify-content: center;
 }
 .dealerCard {
-  width: 30%;
-  height: 30vh;
+  border-radius: 10px;
+  width: 15%;
+  height: 35vh;
   text-align: center;
   background: green;
   margin-right: 1rem;
 }
 .playerTable {
+  justify-content: center;
   display: flex;
 }
+.cardInfo {
+  position: relative;
+  bottom: -45%;
+}
 .playerCard {
-  width: 30%;
-  height: 30vh;
+  border-radius: 10px;
+  width: 15%;
+  height: 35vh;
   text-align: center;
-  background: green;
+  background: blue;
   margin-right: 1rem;
+}
+.scoreBoard {
+  text-align: center;
+}
+.gameOptions {
+  text-align: center;
+  padding: 2rem;
 }
