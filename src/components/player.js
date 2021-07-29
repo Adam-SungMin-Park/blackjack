@@ -1,39 +1,29 @@
 import React , {useState, useEffect} from 'react';
 
-export default function Dealer ({card}){
-  const [playerCard , setPlayerCard ] = useState(card)
-  useEffect(()=>{
-    setPlayerCard(card);
+export default function Dealer ({card , score}){
 
 
-
-  },[card])
-
-  console.log(playerCard)
-  if(playerCard === undefined){
+  console.log(score)
+  if(card === undefined){
     return(
     <>
-    <div className = "card1">the value of the player's card is :
+      <div className = "card1">the value of the player's card is : </div>
 
-
-    </div>
     </>
     )
-
   }
   else{
      return(
     <>
-    <div className = "playerTable">the value of the player's card is :
-      {playerCard.map((card,index)=>{
-        return(
-          <div className = "playerCard" key = {index}>
-            {card.suit} {card.value}
-            </div>
-        )
-      })}
-
-    </div>
+      <div className = "playerTable">the value of the player's card is :{score}
+        {card.map((card,index)=>{
+          return(
+            <div className = "playerCard" key = {index}>
+              {card.suit} {card.value}
+              </div>
+          )
+        })}
+      </div>
     </>
     )
   }
