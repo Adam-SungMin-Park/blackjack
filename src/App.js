@@ -95,6 +95,12 @@ function App() {
       <div className="App">
         <div className="container">
 
+          <Result
+            playerScore = {playerScore}
+            dealerScore = {dealerScore}
+            />
+
+
           <Player
             card = {playerCard}
             score = {playerScore}
