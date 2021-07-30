@@ -11,9 +11,13 @@ export default function Dealer ({card,score}){
   <div className = "dealerTable">
     {card.map((card,index)=>{
       return(
-        <div className = "dealerCard" key = {index}>
+        <div className = "card" key = {index}>
           <div className = "cardInfo">
-          {card.suit} {card.value}
+            <div className ={`suit ${card.suit}`}>
+              <div className ={`value ${card.value}`}>
+                {card.value}
+              </div>
+            </div>
           </div>
         </div>
       )
