@@ -115,7 +115,7 @@ function App() {
   {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="container">
           <Result
             playerScore = {playerScore}
             dealerScore = {dealerScore}
@@ -134,7 +134,7 @@ function App() {
             score = {dealerScore}
           />
 
-        </header>
+        </div>
       </div>
     );
   }
