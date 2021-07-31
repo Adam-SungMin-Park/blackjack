@@ -1,37 +1,44 @@
 import React from 'react';
 
-export default function Result({playerScore, dealerScore}) {
-
-
-
-   if(dealerScore > 21 && playerScore <=21){
+export default function Result({playerScore, dealerScore,playerCard}) {
+  if(playerCard.length <3  ){
     return(
-      <div className ="result">
-        Player Wins
+      <div className = "result">
+        Game
       </div>
     )
   }
-  else if(dealerScore <= 21 && playerScore >21){
-    return(
-      <div className ="result">
-        Dealer Wins
-      </div>
-    )
-  }
-  else if(dealerScore === 21 && playerScore ===21){
-    return(
-      <div className ="result">
-        Tie
-      </div>
-    )
 
-  }
-   else{
+  if(playerScore === 21){
     return(
-      <div className ="result">
-        game ongoing
+      <div className = "result">
+        Player BlackJack!
       </div>
     )
+  }
+  else if(dealerScore === 21){
+    return(
+      <div className = "result">
+        Dealer BlackJack!
+      </div>
+    )
+  }
+  while(playerCard.length >2){
+
+    if(dealerScore <21 && dealerScore > playerScore){
+      return(
+        <div className = "result">
+          Dealer win
+        </div>
+      )
+    }
+    if ( playerScore < 21 && playerScore > dealerScore){
+      return(
+        <div className = "result">
+          Player win
+        </div>
+      )
+    }
   }
 
 
