@@ -13,7 +13,6 @@ function App() {
   const [playerScore , setPlayerScore ] = useState(0);
   const [dealerScore , setDealerScore ] = useState(0);
   const [deck , setDeck] = useState(['loading'])
-
   useEffect(()=>{
     const suits = ["spades", "diamonds", "clubs", "hearts"];
     const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -118,11 +117,11 @@ function App() {
   function stay(){
 
     if(dealerScore<17 ){
-       console.log("ddd")
       let random = Math.floor((Math.random()*deck.length));
       setDealerCard([...dealerCard, deck[random]])
       deck.splice(random, 1);
     }
+
   }
 
   if(demo ===false){
@@ -148,12 +147,15 @@ function App() {
           <Result
             playerScore = {playerScore}
             dealerScore = {dealerScore}
+            playerCard = {playerCard}
+
             />
 
 
           <Player
             card = {playerCard}
             score = {playerScore}
+
           />
           <div className = "gameOptions">
             <button onClick = {reset } >Reset</button>
