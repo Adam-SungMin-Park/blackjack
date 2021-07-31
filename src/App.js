@@ -1,6 +1,5 @@
 import Player from './components/player';
 import Dealer from './components/dealer';
-import Result from './components/result';
 import './App.css';
 import { useEffect , useState } from 'react';
 import { conditionalExpression } from '@babel/types';
@@ -81,13 +80,6 @@ function App() {
     }
   },[playerCard, dealerCard])
 
-  function stay(){
-    if(dealerScore < 17){
-      let newCard = Math.floor((Math.random()*deck.length))
-      setDealerCard([...dealerCard, deck[newCard]])
-    }
-  }
-
   function hit(){
     let random = Math.floor((Math.random()*deck.length));
     let randomDealer = Math.floor((Math.random()*deck.length));
@@ -132,22 +124,25 @@ function App() {
       </div>
     )
   }
-  else
-  {
+  else{
+
     return (
       <div className="App">
         <div className="container">
+
           <Result
             playerScore = {playerScore}
             dealerScore = {dealerScore}
             />
+
+
           <Player
             card = {playerCard}
             score = {playerScore}
           />
           <div className = "gameOptions">
-            <button onClick = {reset} >Reset</button>
-            <button onClick ={stay}>Stay</button>
+            <button onClick = {()=> window.location.reload()} >Reset</button>
+            <button >Stay</button>
             <button onClick ={hit}>Hit</button>
           </div>
           <Dealer
@@ -159,6 +154,10 @@ function App() {
       </div>
     );
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cc68dbc8e8d6b5cb1e86c6741473d154c08a964
 }
 
 export default App;
