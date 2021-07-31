@@ -3,7 +3,7 @@ import Dealer from './components/dealer';
 import Result from './components/result'
 import './App.css';
 import { useEffect , useState } from 'react';
-import { conditionalExpression } from '@babel/types';
+
 
 
 function App() {
@@ -105,10 +105,12 @@ function App() {
   function reset(){
     let random = Math.floor((Math.random()*deck.length));
     let randomDealer = Math.floor((Math.random()*deck.length));
-    if(random === randomDealer){
+    let random2 = Math.floor((Math.random()*deck.length));
+    if(random === randomDealer || random === random2 || randomDealer === random2){
         random = Math.floor((Math.random()*deck.length));
+        random2 = Math.floor((Math.random()*deck.length));
     }
-    setPlayerCard([deck[random]]);
+    setPlayerCard([deck[random],deck[random2]]);
     setDealerCard([deck[randomDealer]]);
     deck.splice(randomDealer,1)
     deck.splice(random,1);
