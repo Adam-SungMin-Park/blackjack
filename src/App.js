@@ -1,5 +1,6 @@
 import Player from './components/player';
 import Dealer from './components/dealer';
+import Result from './components/result'
 import './App.css';
 import { useEffect , useState } from 'react';
 import { conditionalExpression } from '@babel/types';
@@ -27,12 +28,16 @@ function App() {
     }
     let random = Math.floor((Math.random()*deck.length));
     let randomDealer = Math.floor((Math.random()*deck.length));
-    if(random === randomDealer){
+    let random2 =  Math.floor((Math.random()*deck.length));
+    if(random === randomDealer || random === random2 || random2 === randomDealer){
         random = Math.floor((Math.random()*deck.length));
+        random2 =  Math.floor((Math.random()*deck.length));
     }
-    setPlayerCard([deck[random]]);
+
+    setPlayerCard([deck[random],deck[random2]]);
     setDealerCard([deck[randomDealer]]);
     deck.splice(randomDealer,1)
+    deck.splice(random2,1);
     deck.splice(random,1);
 
   },[])
@@ -107,7 +112,15 @@ function App() {
     setDealerCard([deck[randomDealer]]);
     deck.splice(randomDealer,1)
     deck.splice(random,1);
+  }
+  function stay(){
 
+    if(dealerScore<17 ){
+       console.log("ddd")
+      let random = Math.floor((Math.random()*deck.length));
+      setDealerCard([...dealerCard, deck[random]])
+      deck.splice(random, 1);
+    }
   }
 
   if(demo ===false){
@@ -141,8 +154,8 @@ function App() {
             score = {playerScore}
           />
           <div className = "gameOptions">
-            <button onClick = {()=> window.location.reload()} >Reset</button>
-            <button >Stay</button>
+            <button onClick = {reset } >Reset</button>
+            <button onClick = {stay} >Stay</button>
             <button onClick ={hit}>Hit</button>
           </div>
           <Dealer
