@@ -154,10 +154,6 @@ function App() {
       </div>
     );
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 5cc68dbc8e8d6b5cb1e86c6741473d154c08a964
 }
 
 export default App;
