@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function Result({playerScore, dealerScore}) {
-  console.log(playerScore);
-  console.log(dealerScore);
 
 
 
