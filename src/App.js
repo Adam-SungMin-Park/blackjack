@@ -49,7 +49,7 @@ function App() {
           if(score >= 11){
              playerCard[i].score = 1;
 
-          }else{
+          }if(score < 11){
             playerCard[i].score = 11;
           }
         }
@@ -66,9 +66,9 @@ function App() {
     if(dealerCard !== undefined ){
       for(let i = 0 ; i < dealerCard.length ; i++){
         if(dealerCard[i].value==="A"){
-          if(score >= 11){
+          if(dealerScore >= 11){
              dealerCard[i].score = 1;
-          }else{
+          }if(dealerScore < 11){
             dealerCard[i].score = 11;
           }
         }
