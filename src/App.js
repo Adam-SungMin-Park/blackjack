@@ -185,7 +185,7 @@ export default function App() {
       </div>
     );
   }
-  else if(dealerCard.length === playerCard.length+1 || deck.length <3 ) {
+  else if(dealerCard.length === playerCard.length) {
     return(
        <div className="App">
         <div className="container">
