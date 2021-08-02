@@ -58,8 +58,15 @@ export default function Result({playerScore, dealerScore,playerCard,dealerCard,w
       </div>
     )
   }
-  if(dealerScore > 17 && dealerScore === playerScore){
+  if(dealerScore > 21 &&   playerScore >21){
     return(
+      <div className = "result">
+        Tie
+      </div>
+    )
+  }
+  if(dealerScore >17 && dealerScore === playerScore){
+     return(
       <div className = "result">
         Tie
       </div>
