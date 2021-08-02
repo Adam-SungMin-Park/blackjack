@@ -1,23 +1,18 @@
-# Getting Started with Create React App
+# Black Jack Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Tech used
 
-### `npm start`
+React.js(Hooks), JavaScript, HTML5, CSS3
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Rules 
+1. "Reset" will give new cards to both dealer and the player.
+2. "Stay" will give new card to dealer as long as dealer's score is less than 17.
+           3. "Hit" will give card to player. Dealer will get a card if dealer's score is less than 17.</div>
+            <div>4. Game is set once
+              <div className = "rules">
+                <br></br>a) "Stay" when Dealer Score > 17 <br></br> b) Either player or dealer score > 21<br></br> c) Either player or dealer hits 21</div>
 
 ### `npm run build`
 
