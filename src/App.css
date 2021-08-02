@@ -2,6 +2,18 @@
   color: black;
 }
 .result {
+  font-size: 1.5rem;
+}
+.landingPage {
+  text-align: center;
+}
+button {
+  border-radius: 5px;
+  background: green;
+  margin: 0.5rem;
+  color: white;
+}
+.result {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
