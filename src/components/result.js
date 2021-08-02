@@ -1,22 +1,71 @@
 import React from 'react';
 
-export default function Result({playerScore, dealerScore,playerCard}) {
-  if(playerCard.length <3 && playerScore ===21){
-    return (
-      <div className ="result">
-        Player BlackJack!
-      </div>
-    )
-  }
-  if(dealerScore === 21){
-    return (
-      <div className ="result">
-       Dealer BlackJack!
-      </div>
-    )
-  }
+export default function Result({playerScore, dealerScore,playerCard,dealerCard,winner}) {
 
-  if(playerCard.length <3 || playerScore < 21 ){
+
+    if(dealerCard && playerCard &&dealerCard.length === playerCard.length && dealerScore === playerScore){
+      <div className = "result">
+        Tie
+      </div>
+    }
+
+  if(winner){
+    return(
+      <div className = "result">
+        {winner} win
+      </div>
+    )
+  }
+  if(playerScore ===21){
+    return (
+      <div className = "result">
+        Player win
+      </div>
+    )
+  }
+  if(dealerScore === 21 ){
+    return (
+      <div className = "result">
+        Dealer win
+      </div>
+    )
+  }
+  if(dealerCard === 21 && playerCard === 21 && playerCard.length < dealerCard.length){
+    return (
+      <div className = "result">
+        Player win
+      </div>
+    )
+  }
+   if(dealerCard === 21 && playerCard === 21 && playerCard.length > dealerCard.length){
+    return (
+      <div className = "result">
+        Dealer win
+      </div>
+    )
+  }
+  if(playerScore > 21 && dealerScore <= 21){
+    return (
+      <div className = "result">
+        Dealer win
+      </div>
+    )
+  }
+  if(dealerScore > 21 && playerScore <= 21){
+    return (
+      <div className = "result">
+        Player win
+      </div>
+    )
+  }
+  if(dealerScore > 17 && dealerScore === playerScore){
+    return(
+      <div className = "result">
+        Tie
+      </div>
+    )
+  }
+  else{
     return(
       <div className = "result">
         Game
@@ -24,20 +73,7 @@ export default function Result({playerScore, dealerScore,playerCard}) {
     )
   }
 
-  if(playerCard.length >=3 && playerScore > 21){
-    return (
-      <div className ="result">
-        Dealer Win
-      </div>
-    )
-  }
-  if(playerCard.length >=3 && dealerScore > 21){
-    return (
-      <div className ="result">
-        Player Win
-      </div>
-    )
-  }
+
 
 
 }

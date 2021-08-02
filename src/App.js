@@ -13,6 +13,7 @@ function App() {
   const [playerScore , setPlayerScore ] = useState(0);
   const [dealerScore , setDealerScore ] = useState(0);
   const [deck , setDeck] = useState(['loading'])
+  const [winner , setWinner] = useState()
   useEffect(()=>{
     const suits = ["spades", "diamonds", "clubs", "hearts"];
     const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -85,6 +86,7 @@ function App() {
   },[playerCard, dealerCard])
 
   function hit(){
+    console.log(deck)
     let random = Math.floor((Math.random()*deck.length));
     let randomDealer = Math.floor((Math.random()*deck.length));
     if(random===randomDealer){
@@ -96,12 +98,23 @@ function App() {
       setPlayerCard([...playerCard,deck[randomDealer]]);
       deck.splice(randomDealer,1);
     }
-    if(playerScore <21 && dealerScore >17){
+    if(playerScore < 21 && dealerScore >=17){
       setPlayerCard([...playerCard,deck[randomDealer]]);
       deck.splice(randomDealer,1);
     }
   }
   function reset(){
+    const suits = ["spades", "diamonds", "clubs", "hearts"];
+    const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+    const deck = [];
+    for(let i = 0 ; i < suits.length ; i++){
+      for(let j = 0 ; j < values.length ; j++){
+          let card = {value: values[j] , suit : suits[i]};
+          deck.push(card);
+      }
+      setDeck(deck);
+    }
+    setWinner()
     let random = Math.floor((Math.random()*deck.length));
     let randomDealer = Math.floor((Math.random()*deck.length));
     let random2 = Math.floor((Math.random()*deck.length));
@@ -115,15 +128,21 @@ function App() {
     deck.splice(random,1);
   }
   function stay(){
-
+    if(dealerScore >= 17 && playerScore > dealerScore){
+      setWinner("player");
+    }
+    if(dealerScore > 21 ){
+      setWinner("player")
+    }
+    if(dealerScore <= 21 && dealerScore > playerScore){
+      setWinner("Dealer")
+    }
     if(dealerScore<17 ){
       let random = Math.floor((Math.random()*deck.length));
       setDealerCard([...dealerCard, deck[random]])
       deck.splice(random, 1);
     }
-
   }
-
   if(demo ===false){
     return(
       <div className = "App">
@@ -138,24 +157,19 @@ function App() {
       </div>
     )
   }
-  else{
-
+  else if(demo && playerScore < 21 && dealerScore <21 ){
     return (
       <div className="App">
         <div className="container">
-
           <Result
             playerScore = {playerScore}
             dealerScore = {dealerScore}
             playerCard = {playerCard}
-
+            winner = {winner}
             />
-
-
           <Player
             card = {playerCard}
             score = {playerScore}
-
           />
           <div className = "gameOptions">
             <button onClick = {reset } >Reset</button>
@@ -166,10 +180,61 @@ function App() {
             card = {dealerCard}
             score = {dealerScore}
           />
-
         </div>
       </div>
     );
+  }
+  else if(dealerCard.length === playerCard.length+1 ) {
+    return(
+       <div className="App">
+        <div className="container">
+          <Result
+            playerScore = {playerScore}
+            dealerScore = {dealerScore}
+            playerCard = {playerCard}
+            dealerCard = {dealerCard}
+            winner = {winner}
+            />
+          <Player
+            card = {playerCard}
+            score = {playerScore}
+          />
+          <div className = "gameOptions">
+            <button onClick = {reset } >Reset</button>
+          </div>
+          <Dealer
+            card = {dealerCard}
+            score = {dealerScore}
+          />
+        </div>
+      </div>
+    )
+  }
+  else{
+     return(
+       <div className="App">
+        <div className="container">
+          <Result
+            playerScore = {playerScore}
+            dealerScore = {dealerScore}
+            playerCard = {playerCard}
+            dealerCard = {dealerCard}
+            winner = {winner}
+            />
+          <Player
+            card = {playerCard}
+            score = {playerScore}
+          />
+          <div className = "gameOptions">
+            <button onClick = {reset } >Reset</button>
+          </div>
+          <Dealer
+            card = {dealerCard}
+            score = {dealerScore}
+          />
+        </div>
+      </div>
+    )
   }
 }
 
