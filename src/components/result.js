@@ -3,12 +3,25 @@ import React from 'react';
 export default function Result({playerScore, dealerScore,playerCard,dealerCard,winner}) {
 
 
-    if(dealerCard && playerCard &&dealerCard.length === playerCard.length && dealerScore === playerScore){
+  if(dealerCard && playerCard && dealerCard.length === playerCard.length && dealerScore === playerScore){
+    <div className = "result">
+      Tie
+    </div>
+  }
+  if(winner && dealerScore < playerScore){
+    return (
       <div className = "result">
-        Tie
+        Player win
       </div>
-    }
-
+    )
+  }
+  if(winner && dealerScore > playerScore){
+      return (
+        <div className = "result">
+          Dealer win
+        </div>
+      )
+  }
   if(winner){
     return(
       <div className = "result">
@@ -16,14 +29,14 @@ export default function Result({playerScore, dealerScore,playerCard,dealerCard,w
       </div>
     )
   }
-  if(playerScore ===21){
+  if(playerScore ===21 ){
     return (
       <div className = "result">
         Player win
       </div>
     )
   }
-  if(dealerScore === 21 ){
+  if(dealerScore === 21){
     return (
       <div className = "result">
         Dealer win
@@ -37,7 +50,7 @@ export default function Result({playerScore, dealerScore,playerCard,dealerCard,w
       </div>
     )
   }
-   if(dealerCard === 21 && playerCard === 21 && playerCard.length > dealerCard.length){
+  if(dealerCard === 21 && playerCard === 21 && playerCard.length > dealerCard.length){
     return (
       <div className = "result">
         Dealer win
@@ -79,8 +92,4 @@ export default function Result({playerScore, dealerScore,playerCard,dealerCard,w
       </div>
     )
   }
-
-
-
-
 }

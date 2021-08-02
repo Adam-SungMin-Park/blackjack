@@ -41,10 +41,6 @@ export default function App() {
     deck.pop()
     deck.pop()
     deck.pop()
-
-
-    console.log(deck)
-
   },[])
   useEffect(()=>{
     let score=0;
@@ -60,9 +56,7 @@ export default function App() {
           }
         }
         score = score + +playerCard[i].score
-
       }
-
       setPlayerScore(score)
     }
     if(dealerCard !== undefined ){
@@ -81,8 +75,6 @@ export default function App() {
   },[playerCard, dealerCard])
 
   function hit(){
-    console.log(deck)
-
     if(playerScore <21 &&dealerScore <17){
       setDealerCard([...dealerCard,deck[deck.length-1]]);
       deck.pop()
@@ -92,15 +84,12 @@ export default function App() {
     if(playerScore < 21 && dealerScore >=17){
       setPlayerCard([...playerCard,deck[deck.length-1]]);
     deck.pop()
-
   }
 }
   function reset(){
-
     const suits = ["spades", "diamonds", "clubs", "hearts"];
     const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
     const deck = [];
-
     for(let i = 0 ; i < suits.length ; i++){
       for(let j = 0 ; j < values.length ; j++){
           let card = {value: values[j] , suit : suits[i] , score : values[j]};
@@ -125,7 +114,6 @@ export default function App() {
     deck.pop()
   }
   function stay(){
-
     if(dealerScore >= 17 && playerScore > dealerScore){
       setWinner("player");
     }
@@ -152,13 +140,17 @@ export default function App() {
             <div>1. "Reset" will give new cards to both dealer and the player.</div>
             <div>2. "Stay" will give new card to dealer as long as dealer's score is less than 17.</div>
             <div>3. "Hit" will give card to player. Dealer will get a card if dealer's score is less than 17.</div>
+            <div>4. Game is set once
+              <div className = "rules">
+                <br></br>a) "Stay" when Dealer Score > 17 <br></br> b) Either player or dealer score > 21<br></br> c) Either player or dealer hits 21</div>
+              </div>
             <button onClick ={()=>setDemo(true)}>Play the Game</button>
           </div>
         </div>
       </div>
     )
   }
-  else if(demo && playerScore < 21 && dealerScore <21 ){
+  else if(demo && playerScore < 21 && dealerScore <21 && !winner ){
     return (
       <div className="App">
         <div className="container">
@@ -176,6 +168,7 @@ export default function App() {
             <button onClick = {reset } >Reset</button>
             <button onClick = {stay} >Stay</button>
             <button onClick ={hit}>Hit</button>
+        <button onClick ={()=>setDemo(false)}>Rules</button>
           </div>
           <Dealer
             card = {dealerCard}
@@ -202,6 +195,36 @@ export default function App() {
           />
           <div className = "gameOptions">
             <button onClick = {reset } >Reset</button>
+            <button onClick ={()=>setDemo(false)}>Rules</button>
+          </div>
+          <Dealer
+            card = {dealerCard}
+            score = {dealerScore}
+          />
+        </div>
+      </div>
+    )
+  }
+  if(dealerScore > 17 && dealerScore > playerScore){
+
+    return(
+       <div className="App">
+        <div className="container">
+          <Result
+            playerScore = {playerScore}
+            dealerScore = {dealerScore}
+            playerCard = {playerCard}
+            dealerCard = {dealerCard}
+            winner = {winner}
+            />
+          <Player
+            card = {playerCard}
+            score = {playerScore}
+          />
+
+          <div className = "gameOptions">
+            <button onClick = {reset } >Reset</button>
+             <button onClick ={()=>setDemo(false)}>Rules</button>
           </div>
           <Dealer
             card = {dealerCard}
@@ -229,6 +252,7 @@ export default function App() {
 
           <div className = "gameOptions">
             <button onClick = {reset } >Reset</button>
+             <button onClick ={()=>setDemo(false)}>Rules</button>
           </div>
           <Dealer
             card = {dealerCard}
