@@ -1,6 +1,9 @@
 * {
   color: white;
 }
+.value {
+  color: black;
+}
 .landingHeader {
   padding: 1rem;
 }
