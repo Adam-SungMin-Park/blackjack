@@ -135,13 +135,12 @@ export default function App() {
       <div className = "App">
         <div className ="container">
           <div className = "landingPage">
-            <div>Thank you for visiting. This is a Black Jack web application.</div>
-            <div>Rules:</div>
+            <div className = "landingHeader">Thank you for visiting. This is a Black Jack web application.</div>
+            <div className = "rules">Rules:
             <div>1. "Reset" will give new cards to both dealer and the player.</div>
             <div>2. "Stay" will give new card to dealer as long as dealer's score is less than 17.</div>
             <div>3. "Hit" will give card to player. Dealer will get a card if dealer's score is less than 17.</div>
             <div>4. Game is set once
-              <div className = "rules">
                 <br></br>a) "Stay" when Dealer Score > 17 <br></br> b) Either player or dealer score > 21<br></br> c) Either player or dealer hits 21</div>
               </div>
             <button onClick ={()=>setDemo(true)}>Play the Game</button>
