@@ -1,7 +1,8 @@
+
 # Black Jack Application
 
 Hi, this is my solo project for MintBean hackathon. It is a front end web application that lets users to play single-deck (no duplicates) BlackJack with the dealer.
-![Screen Shot 2021-08-03 at 14 28 27](https://user-images.githubusercontent.com/57808972/128088681-b15e284f-0a56-4524-8463-1de2354f7ac2.png)
+![Screen Shot 2021-08-03 at 14 52 46](https://user-images.githubusercontent.com/57808972/128091261-c5eebc72-3096-4d28-94bc-5f1d091f3028.png)
 
 
 ## Deployment Instruction
