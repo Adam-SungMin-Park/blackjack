@@ -1,19 +1,26 @@
 # Black Jack Application
-### Demo Link : https://adam-blackjack-park.netlify.app/
 
+Hi, this is my solo project for MintBean hackathon. It is a front end web application that lets users to play single-deck (no duplicates) BlackJack with the dealer.
+
+## Deployment Instruction
+
+If you want to run this app in your local machine, run
+
+### npm start
 
 ## Tech used
 
 React.js(Hooks), JavaScript, HTML5, CSS3
 
-## Rules 
+### Demo Link : https://adam-blackjack-park.netlify.app/
+
+## Rules
+
 1. "Reset" will give new cards to both dealer and the player.
 2. "Stay" will give new card to dealer as long as dealer's score is less than 17.
 3. "Hit" will give card to player. Dealer will get a card if dealer's score is less than 17.
 4. Game is set once
-              
+
  <div>a) "Stay" when Dealer Score > 17</div>
  <div>b) Either player or dealer score > 21</div>
  <div>c) Either player or dealer hits 21</div>
-
-
