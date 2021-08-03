@@ -40,6 +40,8 @@ button {
   padding-bottom: 1rem;
   background-image: url("./table.jpeg");
   background-size: cover;
+  width: 70vh;
+  margin: auto;
 }
 
 .playerTable {
@@ -50,8 +52,6 @@ button {
 .card {
   border: solid 1px #aaa;
   border-radius: 9px;
-  width: 9.5vh;
-  height: 11vh;
   background-color: white;
   padding: 3px 3px 3px 3px;
   margin: 5px;
